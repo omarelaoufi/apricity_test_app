@@ -10,13 +10,12 @@ class MyDatabase extends sqlite3.Database {
     });
   }
 
-  fetch(query, cb) {
-    this.all(query, [], (err, rows) => {
-      if (err) {
-        console.error(err.message);
-      }
-      cb(rows);
-      this.close();
+  fetch(query) {
+    return new Promise((resolve, reject) => {
+      this.all(query, [], (err, rows) => {
+        if (err) reject(err.message);
+        else resolve(rows);
+      });
     });
   }
 
