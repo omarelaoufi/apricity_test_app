@@ -7,4 +7,6 @@ exports.getAll = (req, res, next) => {
   db.fetch(`SELECT * FROM census_learn_sql LIMIT 100`).then((data) =>
     res.json(data)
   );
+
+  db.close();
 };
