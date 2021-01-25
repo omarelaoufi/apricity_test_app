@@ -1,6 +1,6 @@
 const MyDatabase = require("../utils/dbHandler");
 const { allQuery, columnsQuery } = require("../utils/queries");
-const { databaseFile } = require("../utils/statics");
+const { databaseFile, referenceVariable } = require("../utils/statics");
 
 exports.getAll = (req, res, next) => {
   const db = new MyDatabase(databaseFile);
@@ -15,7 +15,9 @@ exports.getVariableData = (req, res, next) => {
 
   const db = new MyDatabase(databaseFile);
 
-  db.fetch(columnsQuery([variable])).then((data) => res.json(data));
+  db.fetch(columnsQuery([referenceVariable, variable])).then((data) =>
+    res.json(data)
+  );
 
   db.close();
 };
