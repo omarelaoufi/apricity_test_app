@@ -8,7 +8,8 @@ describe("Database handler", () => {
 
     return db
       .fetch(allQuery())
-      .then((data) => expect(data.length).toEqual(100));
+      .then((data) => expect(data.length).toEqual(215132))
+      .catch((err) => console.log(err));
   });
 
   it("should fetch columns data", async () => {
@@ -24,6 +25,7 @@ describe("Database handler", () => {
           { age: null, "class of worker": null },
           { age: null, "class of worker": null },
         ])
-      );
+      )
+      .catch((err) => console.log(err));
   });
 });

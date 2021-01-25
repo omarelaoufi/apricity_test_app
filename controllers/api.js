@@ -5,7 +5,9 @@ const { databaseFile, referenceVariable } = require("../utils/statics");
 exports.getAll = (req, res, next) => {
   const db = new MyDatabase(databaseFile);
 
-  db.fetch(allQuery()).then((data) => res.json(data));
+  db.fetch(allQuery())
+    .then((data) => res.json(data))
+    .catch((err) => console.log(err));
 
   db.close();
 };
@@ -15,9 +17,9 @@ exports.getVariableData = (req, res, next) => {
 
   const db = new MyDatabase(databaseFile);
 
-  db.fetch(columnsQuery([referenceVariable, variable])).then((data) =>
-    res.json(data)
-  );
+  db.fetch(columnsQuery([referenceVariable, variable], { limit: 100 }))
+    .then((data) => res.json(data))
+    .catch((err) => console.log(err));
 
   db.close();
 };
@@ -25,9 +27,9 @@ exports.getVariableData = (req, res, next) => {
 exports.getColumnsNames = (req, res, next) => {
   const db = new MyDatabase(databaseFile);
 
-  db.fetch(allQuery({ limit: 1 })).then((data) =>
-    res.json(Object.keys(data[0]))
-  );
+  db.fetch(allQuery({ limit: 1 }))
+    .then((data) => res.json(Object.keys(data[0])))
+    .catch((err) => console.log(err));
 
   db.close();
 };
