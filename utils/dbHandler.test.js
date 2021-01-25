@@ -16,14 +16,14 @@ describe("Database handler", () => {
     const db = new MyDatabase(databaseFile);
 
     return db
-      .fetch(columnsQuery(["age", "class of worker"], { limit: 5 }))
+      .fetch(columnsQuery(["class of worker"], "age", { limit: 5 }))
       .then((data) =>
         expect(data).toEqual([
-          { age: null, "class of worker": null },
-          { age: null, "class of worker": null },
-          { age: null, "class of worker": null },
-          { age: null, "class of worker": null },
-          { age: null, "class of worker": null },
+          {
+            avg_age: 34.494198663813194,
+            "class of worker": "Not in universe",
+            variable_count: 199523,
+          },
         ])
       )
       .catch((err) => console.log(err));

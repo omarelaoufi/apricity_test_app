@@ -17,7 +17,7 @@ exports.getVariableData = (req, res, next) => {
 
   const db = new MyDatabase(databaseFile);
 
-  db.fetch(columnsQuery([referenceVariable, variable], { limit: 100 }))
+  db.fetch(columnsQuery([variable], referenceVariable))
     .then((data) => res.json(data))
     .catch((err) => console.log(err));
 
