@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import DataViewer from "./components/DataViewer";
+import DataViewer from "./DataViewer";
 
 describe("DataViewer", () => {
   it("should allow user to choose within variables", () => {
