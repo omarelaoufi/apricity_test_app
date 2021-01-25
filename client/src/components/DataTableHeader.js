@@ -3,7 +3,11 @@ export default function DataTableHeader({ headers }) {
     <thead>
       <tr>
         {headers.map((header) => (
-          <th key={header}>{header}</th>
+          <th key={header}>
+            {header
+              .replace("avg_", "average ")
+              .replace("variable_count", "count")}
+          </th>
         ))}
       </tr>
     </thead>

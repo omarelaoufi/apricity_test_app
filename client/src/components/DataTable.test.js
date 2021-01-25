@@ -19,8 +19,8 @@ describe("DataTable", () => {
     expect(th).toHaveLength(3);
     expect([th[0].innerHTML, th[1].innerHTML, th[2].innerHTML]).toEqual([
       "wage per hour",
-      "variable_count",
-      "avg_age",
+      "count",
+      "average age",
     ]);
   });
 
