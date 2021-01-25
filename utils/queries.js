@@ -19,5 +19,7 @@ exports.columnsQuery = (columns, referenceColumn, params = {}) => {
 
   const limiter = "limit" in params ? ` LIMIT ${params["limit"]}` : "";
 
-  return `SELECT ${queryColumns} FROM ${tableName} WHERE ${filters}${limiter}`;
+  const groupBy = `"${columns.join('", "')}"`;
+
+  return `SELECT ${queryColumns} FROM ${tableName} WHERE ${filters} GROUP BY ${groupBy} ORDER BY variable_count DESC${limiter}`;
 };

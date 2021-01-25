@@ -13,6 +13,7 @@ export default function DataViewerContainer() {
     <DataViewer
       variables={variables}
       onVariableSelection={setSelectedVariable}
+      data={data}
     />
   );
 }
