@@ -1,9 +1,10 @@
 const MyDatabase = require("./dbHandler");
-const { allQuery, columnsQuery, columnsNamesQuery } = require("./queries");
+const { allQuery, columnsQuery } = require("./queries");
+const { databaseFile } = require("./statics");
 
 describe("Database handler", () => {
   it("should fetch all data", async () => {
-    const db = new MyDatabase("./us-census.db");
+    const db = new MyDatabase(databaseFile);
 
     return db
       .fetch(allQuery())
@@ -11,7 +12,7 @@ describe("Database handler", () => {
   });
 
   it("should fetch columns data", async () => {
-    const db = new MyDatabase("./us-census.db");
+    const db = new MyDatabase(databaseFile);
 
     return db
       .fetch(columnsQuery(["age", "class of worker"], { limit: 5 }))
