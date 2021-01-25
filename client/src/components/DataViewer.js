@@ -1,9 +1,9 @@
 import Selector from "./Selector";
 
-export default function DataViewer({ variables }) {
+export default function DataViewer({ variables, onVariableSelection }) {
   return (
     <div>
-      <Selector options={variables} />
+      <Selector options={variables} onVariableSelection={onVariableSelection} />
     </div>
   );
 }
