@@ -4,7 +4,7 @@ export default function DataTableBody({ data }) {
       {data.map((valueObj, i) => (
         <tr key={i}>
           {Object.values(valueObj).map((value, j) => (
-            <td key={j}>{value}</td>
+            <td key={j}>{j === 2 ? Math.round(value * 10) / 10 : value}</td>
           ))}
         </tr>
       ))}
