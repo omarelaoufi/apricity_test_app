@@ -28,7 +28,9 @@ exports.getColumnsNames = (req, res, next) => {
   const db = new MyDatabase(databaseFile);
 
   db.fetch(allQuery({ limit: 1 }))
-    .then((data) => res.json(Object.keys(data[0])))
+    .then((data) =>
+      res.json(Object.keys(data[0]).filter((col) => col !== referenceVariable))
+    )
     .catch((err) => console.log(err));
 
   db.close();

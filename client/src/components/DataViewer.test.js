@@ -11,11 +11,12 @@ describe("DataViewer", () => {
     const options = select[0].getElementsByTagName("option");
 
     expect(select).toHaveLength(1);
-    expect(options).toHaveLength(3);
+    expect(options).toHaveLength(4);
     expect([
       options[0].getAttribute("value"),
       options[1].getAttribute("value"),
       options[2].getAttribute("value"),
-    ]).toEqual(variables);
+      options[3].getAttribute("value"),
+    ]).toEqual(["", ...variables]);
   });
 });
